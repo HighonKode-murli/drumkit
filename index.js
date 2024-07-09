@@ -51,5 +51,5 @@ function buttonPress (key){
     document.querySelector("."+key).classList.add("pressed");
     setTimeout(function(){
     document.querySelector("."+key).classList.remove("pressed");
-    },50);
+    },20);
 }
