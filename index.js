@@ -6,13 +6,20 @@ var audio_5 = new Audio("./sounds/tom-2.mp3");
 var audio_6 = new Audio("./sounds/tom-3.mp3");
 var audio_7 = new Audio("./sounds/tom-4.mp3");
 
-function f1(a) {
-  a.play();
+for(i=0;i<=6;i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click",function(){
+       playSound(this.innerHTML);
+       buttonPress(this.innerHTML);
+    })
 }
 
+document.addEventListener("keypress",function(event){
+    playSound(event.key);
+    buttonPress(event.key);
+})
 
-onkeydown = function (event) {
-  var key = event.key; 
+
+ function playSound (key) {
   switch (key) {
     case 'w':
       audio_1.play();
@@ -39,3 +46,10 @@ onkeydown = function (event) {
       break;
   }
 };
+
+function buttonPress (key){
+    document.querySelector("."+key).classList.add("pressed");
+    setTimeout(function(){
+    document.querySelector("."+key).classList.remove("pressed");
+    },50);
+}
